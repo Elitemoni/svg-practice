@@ -1,0 +1,26 @@
+references:
+https://www.w3schools.com/graphics/svg_intro.asp
+https://svg-tutorial.com/summary
+
+list of svg shapes
+- <line>
+- <rect>
+- <circle>
+- <ellipse>
+- <polygon>
+- <polyline>
+- <path>
+
+list of path commands
+- M x y | move pen to (x,y)
+- L x y | draw a line to (x,y) from pen pos
+- H x | draw a horizontal line of length x
+- V y | draw a vertical line of length y
+- C x1 y1, x2 y2, xb yb |  first two are control points, b is destination point
+- S
+- Q x1 y1, xb yb | first is control point, b is destination point
+- T
+- A
+- Z
+
+all svg tag types 
