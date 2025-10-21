@@ -11,16 +11,49 @@ list of svg shapes
 - <polyline>
 - <path>
 
-list of path commands
-- M x y | move pen to (x,y)
-- L x y | draw a line to (x,y) from pen pos
-- H x | draw a horizontal line of length x
-- V y | draw a vertical line of length y
-- C x1 y1, x2 y2, xb yb |  first two are control points, b is destination point
-- S
-- Q x1 y1, xb yb | first is control point, b is destination point
-- T
-- A
-- Z
+list of <path> names
+- M move to
+- L line to
+- H horizontal line to
+- V vertical line to
+- Q quadratic bezier curve to
+- T smooth quadratic bezier curve to
+- C cubic bezier curve to
+- S smooth cubic bezier curve to
+- A elliptical arc
+- Z closepath
 
-all svg tag types 
+list of <path> commands and parameters
+
+- M xa ya | move pen to (x,y)
+
+- L xb yb | draw a line to (x,y) from pen pos
+
+- H xb | draw a horizontal line of length x
+
+- V yb | draw a vertical line of length y
+
+- Q x1 y1, xb yb | first is control point, b is destination point
+
+- T xb yb | implicit control point is based on previous control point. If no previous control point, implicit control point becomes same as starting point
+
+- C x1 y1, x2 y2, xb yb |  first two are control points, b is destination point
+
+- S x2, y2, xb yb | like C, implicit first control point based on previous second control point accross geometric reflection of the previous endpoint. If no previous second control point, implicit first control point becomes same as starting point
+
+- A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+
+- Z | no parameters, draws a line back to the initial point
+
+T after Q or M
+S after C or M
+if T/S after C/Q, degenerates into using initial point
+
+reflection of one point accross another point
+A point that will reflect across
+B point that is reflected across
+R reflected point
+R = B - (A - B)
+S context
+reflected_point = endpoint - (control_point - endpoint)
+
